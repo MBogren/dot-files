@@ -1,6 +1,6 @@
 # Dotfiles
 ```
-curl --silent https://raw.githubusercontent.com/lingard/dot-files/master/install.sh | sh
+curl --silent https://raw.githubusercontent.com/MBogren/dot-files/master/install.sh | sh
 ```
 
 ## Additional steps

@@ -58,7 +58,7 @@
   abbrevCommit = true
 
 # URL shorthands
-# gh:lingard/dotfiles
+# gh:moa/dotfiles
 [url "git@github.com:"]
   insteadOf = "gh:"
   pushInsteadOf = "gh:"
@@ -75,6 +75,6 @@
 [init]
 	templatedir = ~/.git_template
 [ghi]
-	token = !security find-internet-password -a lingard -s github.com -l 'ghi token' -w
+	token = !security find-internet-password -a MBogren -s github.com -l 'ghi token' -w
 [pull]
 	rebase = true

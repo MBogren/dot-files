@@ -7,22 +7,22 @@ pushd .
 mkdir -p $dev
 cd $dev
 
-echo 'Enter new hostname of the machine (e.g. macbook-moabogren)'
-  read hostname
-  echo "Setting new hostname to $hostname..."
-  scutil --set HostName "$hostname"
-  compname=$(sudo scutil --get HostName | tr '-' '.')
-  echo "Setting computer name to $compname"
-  scutil --set ComputerName "$compname"
-  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
+# echo 'Enter new hostname of the machine (e.g. macbook-christer)'
+#   read hostname
+#   echo "Setting new hostname to $hostname..."
+#   scutil --set HostName "$hostname"
+#   compname=$(sudo scutil --get HostName | tr '-' '.')
+#   echo "Setting computer name to $compname"
+#   scutil --set ComputerName "$compname"
+#   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$compname"
 
-pub=$HOME/.ssh/id_rsa.pub
-echo 'Checking for SSH key, generating one if it does not exist...'
-  [[ -f $pub ]] || ssh-keygen -t rsa
+# pub=$HOME/.ssh/id_rsa.pub
+# echo 'Checking for SSH key, generating one if it does not exist...'
+#   [[ -f $pub ]] || ssh-keygen -t rsa
 
-echo 'Copying public key to clipboard. Paste it into your Github account...'
-  [[ -f $pub ]] && cat $pub | pbcopy
-  open 'https://github.com/account/ssh'
+# echo 'Copying public key to clipboard. Paste it into your Github account...'
+#   [[ -f $pub ]] && cat $pub | pbcopy
+#   open 'https://github.com/account/ssh'
 
 # Install Xcode Command Line Tools
 if ! xcode-select --print-path &> /dev/null; then
@@ -83,11 +83,13 @@ if [[ `uname` == 'Darwin' ]]; then
 
 fi
 
-echo 'Symlinking config files...'
-  source 'bin/symlink-dotfiles.sh'
-
+# Must be done before symlinking as oh-my-zsh will override .zshrc
 echo 'installing oh my zsh'
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+
+echo 'Symlinking config files...'
+  source 'bin/symlink-dotfiles.sh'
 
 ln -sf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
